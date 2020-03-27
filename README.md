@@ -10,7 +10,8 @@ git clone https://github.com/ziizhuwy/XXEAgent.git
 cd XXEAgent
 mvn clean package
 ```
-或者直接下载release包
+或者直接下载release包(https://github.com/ziizhuwy/XXEAgent/releases/download/v1.0/XXE-Agent.jar).
+
 2. 安装Agent
 ```shell script
 -javaagent:/路径/XXE-Agent.jar
