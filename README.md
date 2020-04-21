@@ -10,7 +10,7 @@ git clone https://github.com/ziizhuwy/ProtectAgent.git
 cd ProtectAgent
 mvn clean package
 ```
-或者直接下载release包(https://github.com/ziizhuwy/XXEAgent/releases/download/v1.0/XXE-Agent.jar).
+或者直接下载release包。
 
 2. 安装Agent
 ```shell script
