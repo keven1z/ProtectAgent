@@ -1,12 +1,15 @@
-package cn.com.x1001;
+package cn.com.x1001.hook.http;
 
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.AdviceAdapter;
 import org.objectweb.asm.commons.Method;
 
-public class XXEAdviceAdapter extends AdviceAdapter {
-    private String className;
+public class RequestAdviceAdapter extends AdviceAdapter {
+//    Method method = new Method("evaluateInput", "(Ljava/lang/String;)V");
+    Method method = new Method("parseRequest", "([Ljava/lang/Object;)V");
+
     /**
      * Creates a new {@link AdviceAdapter}.
      *
@@ -16,21 +19,14 @@ public class XXEAdviceAdapter extends AdviceAdapter {
      * @param access the method's access flags (see {@link Opcodes}).
      * @param name   the method's name.
      * @param desc   the method's descriptor (see {@link Type Type}).
-     * @param className the method's className
      */
-    protected XXEAdviceAdapter(int api, MethodVisitor mv, int access, String name, String desc,String className) {
+    public RequestAdviceAdapter(int api, MethodVisitor mv, int access, String name, String desc) {
         super(api, mv, access, name, desc);
-        this.className = className;
     }
 
     @Override
     protected void onMethodEnter() {
-        Type type = Type.getType(ResolveClassController.class);
-        Method method = new Method("onResolveClass", "([Ljava/lang/Object;Ljava/lang/String;)V");
-        //push所有参数
         loadArgArray();
-        //push className
-        visitLdcInsn(className);
-        invokeStatic(type,method);
+        invokeStatic(Type.getType(RequestParser.class),method);
     }
 }

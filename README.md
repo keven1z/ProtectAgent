@@ -1,26 +1,26 @@
-# XXEAgent
-一个java agent来防止XXE攻击。
+# PROTECT Agent
+一个java agent来防止XXE、s2-032、s2-037攻击。
 # 支持版本
 * JAVA 5-8
 * openJDK
 # 部署说明
 1. 下载Agent
 ```shell script
-git clone https://github.com/ziizhuwy/XXEAgent.git
-cd XXEAgent
+git clone https://github.com/ziizhuwy/ProtectAgent.git
+cd ProtectAgent
 mvn clean package
 ```
 或者直接下载release包
 2. 安装Agent
 ```shell script
--javaagent:/路径/XXE-Agent.jar
+-javaagent:/路径/ProtectAgent.jar
 ```
 路径为XXE-Agent.jar的目录
 3. 安装成功
 启动应用时可以看到如下标志表明安装成功
 ```text
 ********************************************************************
-*                     Agent for XXE attacks                        *
+*                     Agent for  attacks                        *
 ********************************************************************
 ```
 # 测试DEMO
